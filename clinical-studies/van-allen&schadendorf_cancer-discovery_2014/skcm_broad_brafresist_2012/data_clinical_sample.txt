@@ -1,0 +1,83 @@
+#Patient Identifier	Sample Identifier	Oncotree Code	Cancer Type	Cancer Type Detailed	Matched Normal Tissue	mean target coverage normal	mean target coverage tumor	Somatic Status
+#Identifier to uniquely specify a patient.	A unique sample identifier.	Oncotree Code	Cancer Type	Cancer Type Detailed	Matched Normal Tissue	mean target coverage normal	mean target coverage tumor	Somatic Status
+#STRING	STRING	STRING	STRING	STRING	STRING	NUMBER	NUMBER	STRING
+#1	1	1	1	1	1	1	1	1
+PATIENT_ID	SAMPLE_ID	ONCOTREE_CODE	CANCER_TYPE	CANCER_TYPE_DETAILED	MATCHED_NORMAL_TISSUE	MEAN_TARGET_COVERAGE_NORMAL	MEAN_TARGET_COVERAGE_TUMOR	SOMATIC_STATUS
+Pat_01	Pat_01_Post	MEL	Melanoma	Melanoma	Whole Blood	108	364	Matched
+Pat_01	Pat_01_Pre	MEL	Melanoma	Melanoma	Whole Blood	108	328	Matched
+Pat_02	Pat_02_Post	MEL	Melanoma	Melanoma				Matched
+Pat_04	Pat_04_Post	MEL	Melanoma	Melanoma	Whole Blood	111	111	Matched
+Pat_04	Pat_04_Pre	MEL	Melanoma	Melanoma	Whole Blood	111	101	Matched
+Pat_05	Pat_05_Post	MEL	Melanoma	Melanoma	Whole Blood	113	274	Matched
+Pat_05	Pat_05_Pre	MEL	Melanoma	Melanoma	Whole Blood	113	286	Matched
+Pat_06	Pat_06_Post	MEL	Melanoma	Melanoma	Whole Blood	96	577	Matched
+Pat_06	Pat_06_Pre	MEL	Melanoma	Melanoma	Whole Blood	96	572	Matched
+Pat_07	Pat_07_Post	MEL	Melanoma	Melanoma	Whole Blood	80	36	Matched
+Pat_07	Pat_07_Pre	MEL	Melanoma	Melanoma	Whole Blood	80	192	Matched
+Pat_08	Pat_08_Post	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	132	331	Matched
+Pat_08	Pat_08_Pre	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	132	181	Matched
+Pat_11	Pat_11_Post	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	120	370	Matched
+Pat_11	Pat_11_Pre	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	120	214	Matched
+Pat_14	Pat_14_Post	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	106	404	Matched
+Pat_14	Pat_14_Pre	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	106	403	Matched
+Pat_15	Pat_15_Post	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	114	403	Matched
+Pat_15	Pat_15_Pre	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	114	95	Matched
+Pat_16	Pat_16_Post	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	102	277	Matched
+Pat_16	Pat_16_Pre	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	102	267	Matched
+Pat_21	Pat_21_Post	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	104	82	Matched
+Pat_22	Pat_22_Post	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	130	298	Matched
+Pat_22	Pat_22_Pre	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	130	51	Matched
+Pat_24	Pat_24_Post	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	161	193	Matched
+Pat_24	Pat_24_Pre	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	161	247	Matched
+Pat_26	Pat_26_Post	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	122	304	Matched
+Pat_26	Pat_26_Pre	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	122	297	Matched
+Pat_27	Pat_27_Post	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	134	315	Matched
+Pat_28	Pat_28_Post	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	110	153	Matched
+Pat_29	Pat_29_Post	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	24	96	Matched
+Pat_29	Pat_29_Pre	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	24	112	Matched
+Pat_30	Pat_30_Post	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	142	166	Matched
+Pat_30	Pat_30_Pre	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	142	305	Matched
+Pat_31	Pat_31_Post	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	61	182	Matched
+Pat_31	Pat_31_Pre	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	61	262	Matched
+Pat_32	Pat_32_Post	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	61	242	Matched
+Pat_32	Pat_32_Pre	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	61	153	Matched
+Pat_34	Pat_34_Pre	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	37	153	Matched
+Pat_36	Pat_36_Post	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	17	116	Matched
+Pat_37	Pat_37_Post	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	116	295	Matched
+Pat_40	Pat_40_Post	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	73	246	Matched
+Pat_40	Pat_40_Pre	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	73	150	Matched
+Pat_41	Pat_41_Post	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	83	233	Matched
+Pat_41	Pat_41_Pre	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	83	238	Matched
+Pat_44	Pat_44_Post	MEL	Melanoma	Melanoma	Whole Blood	117	183	Matched
+Pat_44	Pat_44_Pre	MEL	Melanoma	Melanoma	Whole Blood	117	60	Matched
+Pat_45	Pat_45_Post	MEL	Melanoma	Melanoma	Whole Blood	127	168	Matched
+Pat_45	Pat_45_Pre	MEL	Melanoma	Melanoma	Whole Blood	127	153	Matched
+Pat_46	Pat_46_Post	MEL	Melanoma	Melanoma	Whole Blood	102	69	Matched
+Pat_46	Pat_46_Pre	MEL	Melanoma	Melanoma	Whole Blood	102	101	Matched
+Pat_48	Pat_48_Post	MEL	Melanoma	Melanoma	Whole Blood	150	116	Matched
+Pat_48	Pat_48_Pre	MEL	Melanoma	Melanoma	Whole Blood	150	95	Matched
+Pat_49	Pat_49_Post	MEL	Melanoma	Melanoma	Whole Blood	131	69	Matched
+Pat_50	Pat_50_Pre	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	69	133	Matched
+Pat_51	Pat_51_Pre	MEL	Melanoma	Melanoma	Unavailable	63	0	Matched
+Pat_53	Pat_53_Post	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	7	170	Matched
+Pat_53	Pat_53_Pre	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	7	242	Matched
+Pat_54	Pat_54_Pre	MEL	Melanoma	Melanoma	Whole Blood	68	176	Matched
+Pat_55	Pat_55_Pre	MEL	Melanoma	Melanoma	Whole Blood	67	91	Matched
+Pat_58	Pat_58_Post	MEL	Melanoma	Melanoma	Lymphocytes	145	269	Matched
+Pat_58	Pat_58_Pre	MEL	Melanoma	Melanoma	Lymphocytes	145	82	Matched
+Pat_59	Pat_59_Post	MEL	Melanoma	Melanoma	Lymphocytes	65	123	Matched
+Pat_59	Pat_59_Pre	MEL	Melanoma	Melanoma	Lymphocytes	65	119	Matched
+Pat_60	Pat_60_Post	MEL	Melanoma	Melanoma	Lymphocytes	60	191	Matched
+Pat_60	Pat_60_Pre	MEL	Melanoma	Melanoma	Lymphocytes	60	115	Matched
+Pat_63	Pat_63_Post	MEL	Melanoma	Melanoma	Lymphocytes	72	145	Matched
+Pat_63	Pat_63_Pre	MEL	Melanoma	Melanoma	Lymphocytes	72	77	Matched
+Pat_65	Pat_65_Pre	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	60	356	Unmatched
+Pat_66	Pat_66_Pre	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	77	180	Matched
+Pat_70	Pat_70_Post	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	16	398	Matched
+Pat_70	Pat_70_Pre	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	16	176	Matched
+Pat_73	Pat_73_Post	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	131	109	Matched
+Pat_73	Pat_73_Pre	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	131	199	Matched
+Pat_74	Pat_74_Post	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	76	78	Matched
+Pat_74	Pat_74_Pre	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	76	127	Matched
+Pat_76	Pat_76_Post	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	85	75	Matched
+Pat_76	Pat_76_Pre	MEL	Melanoma	Melanoma	Paraffin Embedded Tissue	85	144	Matched

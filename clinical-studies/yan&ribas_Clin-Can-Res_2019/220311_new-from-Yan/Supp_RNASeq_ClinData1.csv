@@ -1,0 +1,73 @@
+Rx,BORR,Height (cm),Weight (kg),BMI,Age,Sex,ECOG,Stage,LDH,OS Censor,OS (Months),PFS Censor,PFS (Months),RNA-Seq Sample
+Vemurafenib,PD,193,67.7,18.2,61,Male,0,M1A,Elevated,0,10.84,0,2.76,05420180C
+Vemurafenib,PD,179.1,77.3,24.1,31,Male,1,M1C,Elevated,0,3.45,0,1.71,05420129C
+Vemurafenib,PD,194,104,27.6,34,Male,1,M1C,Normal,0,4.9,0,2.6,05420159C
+Vemurafenib,PD,168,85.8,30.4,43,Female,1,M1A,Normal,1,19.58,0,6.87,05420169C
+Vemurafenib,PD,162,56.3,21.5,34,Female,1,M1C,Elevated,0,2.53,0,2.4,05420138C
+Vemurafenib,PD,171,77.7,26.6,55,Male,1,M1C,Elevated,0,5.55,0,1.61,05420145C
+Vemurafenib,CR,172,65,22,50,Female,0,M1B,Normal,1,18.5,1,16.66,05420099C
+Vemurafenib,PD,180.3,73.4,22.6,74,Male,1,M1C,Normal,0,2.6,0,2.43,05420199C
+Vemurafenib,CR,170.2,63.5,21.9,43,Female,1,M1B,Normal,1,15.34,0,12.32,05420211C
+Vemurafenib,CR,178.3,87.7,27.6,54,Male,1,M1A,Normal,1,20.73,1,19.35,05420135C
+Vemurafenib,CR,160,79,30.9,68,Male,0,M1A,Elevated,1,15.28,1,15.28,03660356C
+Vemurafenib,PD,165,74,27.2,86,Male,0,Unresectable Stage IIIC,Normal,0,11.2,0,2.1,03660196C
+Vemurafenib,PD,,92.4,,26,Male,0,M1B,Elevated,0,11.3,0,2.86,03660555B
+Vemurafenib,CR,180,85,26.2,45,Male,0,M1A,Normal,1,18.1,1,17.38,03660602B
+Vemurafenib,CR,165,80,29.4,58,Female,0,M1A,Normal,1,14.65,1,13.24,03660598B
+Vemurafenib,CR,,83.7,,63,Female,1,M1A,Normal,1,17.41,0,12.91,03660445B
+Vemurafenib,PD,167.5,87.9,31.3,52,Female,0,M1C,Elevated,0,2.86,0,1.28,03660447B
+Vemurafenib,CR,168,74.9,26.5,73,Male,0,M1B,Elevated,1,17.31,1,15.28,03660501B
+Vemurafenib,PD,180,103.5,31.9,57,Male,0,M1B,Normal,0,3.58,0,1.45,03660502B
+Vemurafenib + Cobimetinib,PD,165.1,80.1,29.4,48,Male,0,Unresectable Stage IIIC,Normal,0,8.256578947,0,1.414473684,04240076F
+Vemurafenib + Cobimetinib,PD,182,84.2,25.4,33,Male,1,M1C,Normal,0,5.098684211,0,1.414473684,04240106F
+Vemurafenib + Cobimetinib,PD,178.4,101.9,32,62,Male,0,M1C,Normal,0,3.585526316,0,1.381578947,04240151B
+Vemurafenib + Cobimetinib,PD,163.3,59.6,22.3,51,Female,1,M1C,Elevated,0,2.697368421,0,1.644736842,04240120C
+Vemurafenib + Cobimetinib,CR,168,76,26.9,65,Male,0,M1B,Normal,,,0,15,05320196B
+Vemurafenib,CR,177.8,113,35.7,62,Male,0,M1A,,,,0,15.03289474,05320420B
+Vemurafenib + Cobimetinib,CR,175,75.6,24.7,78,Male,0,M1C,Normal,,,0,16.48026316,05320302B
+Vemurafenib,PD,165,74,27.2,55,Male,1,IIIC,,,,0,1.875,05320384B
+Vemurafenib + Cobimetinib,CR,178,70.8,22.3,60,Female,0,M1B,Normal,,,1,18.35526316,05320108C
+Vemurafenib,PD,171,75.3,25.8,80,Female,0,M1C,Normal,,,0,1.184210526,05320011B
+Vemurafenib + Cobimetinib,CR,173,71.7,24,68,Male,0,M1C,Elevated,,,0,8.585526316,05320114C
+Vemurafenib + Cobimetinib,PD,170,58,20.1,54,Female,0,M1C,Normal,,,0,1.842105263,05320141B
+Vemurafenib,CR,180,98.8,30.5,50,Male,0,IIIC,Normal,,,1,18.42105263,05320093C
+Vemurafenib,CR,170,74.7,25.8,68,Male,0,M1A,Normal,,,0,18.61842105,05320003B
+Vemurafenib + Cobimetinib,CR,182,81.2,24.5,69,Male,1,M1B,Elevated,,,1,18.3881579,05320385B
+Vemurafenib,CR,181,73,22.3,58,Male,0,M1B,Normal,,,1,16.48026316,05320243B
+Vemurafenib + Cobimetinib,CR,183,71,21.2,24,Male,0,M1A,Normal,,,0,10.52631579,05320220B
+Vemurafenib,CR,164,62,23.1,48,Female,0,M1B,Normal,,,1,11.08552632,05320234B
+Vemurafenib + Cobimetinib,CR,168,78,27.6,86,Female,1,M1C,Normal,,,1,16.31578947,05320229B
+Vemurafenib,CR,163,106,39.9,69,Female,1,M1A,Normal,,,1,12.92763158,05320012B
+Vemurafenib + Cobimetinib,CR,187,81,23.2,44,Male,1,M1A,Normal,,,1,16.64473684,05320232B
+Vemurafenib + Cobimetinib,PD,177,68,21.7,41,Male,1,M1C,Normal,,,0,1.052631579,05320100B
+Vemurafenib,CR,173,93,31.1,55,Male,0,M1B,Normal,,,1,15.19736842,05320146B
+Vemurafenib + Cobimetinib,PD,170,80,27.7,64,Female,0,M1C,Normal,,,0,1.414473684,05320388B
+Vemurafenib,CR,172,70.9,24,51,Female,0,M1C,Normal,,,1,16.875,05320205B
+Vemurafenib + Cobimetinib,PD,173,74,24.7,40,Male,0,M1A,Normal,,,0,1.875,05320216B
+Vemurafenib,PD,190,113,31.3,69,Male,1,M1C,Elevated,,,0,2.039473684,05320191B
+Vemurafenib + Cobimetinib,PD,158,60,24,47,Female,0,M1C,Elevated,,,0,2.072368421,05320179B
+Vemurafenib,PD,175,78,25.5,36,Male,0,M1C,Elevated,,,0,1.907894737,05320188B
+Vemurafenib + Cobimetinib,PD,168,75,26.6,68,Female,0,IIIC,Elevated,,,0,2.5,05320393B
+Vemurafenib + Cobimetinib,CR,169,85,29.8,81,Female,0,IIIC,Normal,,,1,14.90131579,05320184B
+Vemurafenib + Cobimetinib,PD,182.88,115.67,34.6,51,Male,0,M1C,Elevated,,,0,1.743421053,05320372C
+Vemurafenib,PD,156,49,20.1,64,Female,0,M1C,Normal,,,0,1.743421053,05320143B
+Vemurafenib,PD,,82,,68,Male,0,M1C,Elevated,,,0,1.414473684,05320119C
+Vemurafenib + Cobimetinib,CR,183,100.5,30,64,Male,0,M1A,Normal,,,1,14.27631579,05320102B
+Vemurafenib + Cobimetinib,PD,183.6,108.6,32.2,44,Male,1,M1C,Elevated,,,0,2.072368421,05320424B
+Vemurafenib,CR,158,70,28,34,Female,0,M1B,Normal,,,1,13.15789474,05320239B
+Vemurafenib,PD,167,62.7,22.5,46,Female,1,M1C,Normal,,,0,1.875,05320436B
+Vemurafenib,CR,158,59,23.6,44,Female,0,IIIC,Normal,,,1,5.131578947,05320217B
+Vemurafenib + Cobimetinib,CR,157,92,37.3,47,Female,0,M1C,Elevated,,,1,12.82894737,05320410C
+Vemurafenib + Cobimetinib,PD,180.3,87.5,26.9,33,Male,0,M1B,Normal,,,0,5.52631579,05320435B
+Vemurafenib,PD,164,88.1,32.8,52,Female,0,M1C,Elevated,,,0,1.907894737,05320446B
+Vemurafenib,PD,,,,35,Male,0,M1C,Elevated,,,0,1.710526316,05320459B
+Vemurafenib,PD,167,71.5,25.6,68,Female,1,M1C,Normal,,,0,1.842105263,05320132B
+Vemurafenib,PD,183,65.8,19.6,39,Male,0,M1C,Elevated,,,0,1.907894737,05320425B
+Vemurafenib + Cobimetinib,PD,175,87,28.4,48,Male,0,M1C,Elevated,,,0,1.019736842,05320381B
+Vemurafenib,PD,173,71.8,24,76,Male,0,M1C,Normal,,,0,1.77631579,05320399C
+Vemurafenib + Cobimetinib,CR,176,105,33.9,45,Male,0,M1A,Normal,,,1,10.85526316,05320353C
+Vemurafenib,CR,180,118,36.4,50,Male,0,IIIC,Normal,,,1,13.02631579,05320444B
+Vemurafenib,PD,168,82,29.1,62,Female,0,M1C,Elevated,,,0,1.842105263,05320328B
+Vemurafenib,PD,183.5,78.44,23.3,45,Male,0,M1B,Normal,,,0,1.875,05320286B
+Vemurafenib,CR,180,82,25.3,58,Male,0,M1A,Normal,,,0,7.302631579,05320452B
+Vemurafenib,PD,176,85,27.4,57,Male,0,M1B,Normal,,,0,2.203947368,05320449B

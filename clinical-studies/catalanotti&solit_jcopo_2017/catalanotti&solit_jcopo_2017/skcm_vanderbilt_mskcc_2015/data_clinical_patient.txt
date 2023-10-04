@@ -1,0 +1,71 @@
+#Patient Identifier	Response to Target Therapy	Response grade	Overall Survival (Months)	Overall Survival Status	Progress Free Survival (Months)	M Stage	Stage	AGENT	BORR	BRAIN METS	Immunotherapy	Chemotherapy	ECOG status	Comments	Liver Involvement	RECIST burden of disease (mm)
+#Identifier to uniquely specify a patient.	Did the patient respond to Target Therapy	Response grade	Overall survival in months since initial diagonosis.	Overall patient survival status.	Progress Free Survival (Months)	M Stage	Stage	AGENT	BORR	Brain Metatstasis	Immunotherapy	Chemotherapy.	ECOG status	Comments.	Liver Involvement	RECIST burden of disease (mm)
+#STRING	STRING	STRING	NUMBER	STRING	NUMBER	STRING	STRING	STRING	STRING	STRING	STRING	STRING	STRING	STRING	STRING	NUMBER
+#1	1	1	1	9	1	1	1	1	1	1	1	1	1	1	1	1
+PATIENT_ID	RESPONSE_TO_TARGET_THERAPY	RESPONSE_GRADE	OS_MONTHS	OS_STATUS	PFS_MONTHS	M_STAGE	STAGE	AGENT	BORR	BRAIN_METS	IMMUNE_TREATMENT	CHEMOTHERAPY	ECOG_STATUS	COMMENTS	LIVER_INVOLVEMENT	RECIST_BURDEN_OF_DISEASE
+VT030	PR	Intermediate	21.3	1:DECEASED	6.5	M1c	IV	Vemurafenib	-0.71	NO	Ipilimumab	YES	0		YES	148.0
+VT006	SD	Excellent	46.6	0:LIVING	44.6		IIIC	Dabrafenib	-0.21	NO	Ipilimumab/Nivolumab	NO	0		NO	62.9
+VT014	SD	Intermediate	23.7	0:LIVING	6.4	M1c	IV	Vemurafenib	-0.24	NO	Ipilimumab	NO	0		YES	87.0
+VT010	CR	Excellent	23.3	1:DECEASED	8.0	M1c	IV	Vemurafenib	-1	YES	Ipilimumab	NO	0	RECIST BURDEN OF DISEASE is NA:  not measurable	NO	
+VT011	PR	Excellent	41.8	0:LIVING	9.9	M1c	IV	Vemurafenib	-0.79	NO	Durvalumab	NO	1		NO	101.0
+VT021m1	PR	Excellent	16.9	1:DECEASED	7.9	M1c	IV	Dabrafenib	-0.54	NO	Ipilimumab	YES	0		NO	42.0
+VT019	CR	Excellent	43.8	0:LIVING	43.8	M1c	IV	Vemurafenib	-1	NO	Ipilimumab	NO	1		NO	78.0
+VT029	PR	Excellent	22.4	1:DECEASED	21.4	M1c	IV	Vem+cob (leukemia patient)	-0.53	NO	Ipilimumab	NO	3		YES	171.0
+VT007m1	PR	Excellent	51.8	1:DECEASED	14.2	M1c	IV	Vemurafenib	-0.5	YES	Ipilimumab	NO	0	RECIST BURDEN OF DISEASE is NA - bone/brain, not measurable	NO	
+VT041	PR	Intermediate	8.7	0:LIVING	3.5	M1c	IV	Vemurafenib	-0.5	NO	No	NO	0		NO	59.0
+VT043	PR	Intermediate	29.0	0:LIVING	6.1	M1c	IV	Vemurafenib	-0.3	NO	Ipilimumab + Pembrolizumab	NO	0		NO	18.0
+VT050	SD	Excellent	23.6	1:DECEASED	20.8	M1c	IV	Vemurafenib	-0.21	YES	No	NO	1		NO	30.0
+MT08m1	PR	Excellent	46.4	0:LIVING	7.1	M1c	IV	Vemurafenib	-0.72	NO	No	NO	0		NO	94.9
+BW-09109-0376	PR	Excellent	35.0	1:DECEASED	26.8	M1b	IV	Vemurafenib	-0.52	NO	No	NO	1		NO	21.0
+LL-0757	PR	Excellent	35.3	1:DECEASED	15.4	M1c	IV	Vemurafenib	-0.53	YES	No	NO	0		NO	30.0
+JS-0953	PR	Excellent	15.1	1:DECEASED	11.6	M1c	IV	Vemurafenib	-0.85	NO	No	YES	1		YES	59.0
+HS-0929	PR	Excellent	31.0	0:LIVING	31.0	M1a	IV	Vemurafenib	-0.69	NO	No	Biochemotherapy	0		NO	43.0
+FF-1202	CR	Excellent	66.6	0:LIVING	16.5	M1c	IV	Vemurafenib	-1	NO	High-Dose Il-2	NO	1		NO	111.0
+JH-1397	CR	Excellent	58.0	0:LIVING	58.0	M1c	IV	Vemurafenib	-1	NO	High-Dose Il-2	NO	0		NO	47.0
+MS-1386	CR	Excellent	58.9	0:LIVING	58.9	M1c	IV	Vemurafenib	-1	NO	High-Dose Il-2	NO	0		YES	25.0
+MS-2	PR	Excellent	14.8	1:DECEASED	7.9	M1c	IV	Vemurafenib	-0.79	NO	No	YES	1		YES	208.0
+VT009	PR	Intermediate	10.2	1:DECEASED	5.4	M1b	IV	Vemurafenib	-0.74	NO	No	YES	1		NO	83.0
+VT027	SD	Intermediate	6.9	1:DECEASED	5.7	M1c	IV	Vemurafenib	-0.02	NO	Mk-3475	NO	1		YES	61.0
+VT008T1	SD	Intermediate	10.3	1:DECEASED	6.3	M1c	IV	Dabrafenib	-0.11	NO	Ipilimumab	NO	0		YES	75.0
+VT013m3	PR	Intermediate	54.3	0:LIVING	6.2	M1c	IV	Vemurafenib	-0.54	NO	Ipilimumab/Nivolumab; Had Prior Pod On Xl281	NO	1		YES	79.0
+VT005	SD	Intermediate	12.2	1:DECEASED	4.4	M1c	IV	Vemurafenib	-0.24	NO	No	NO	0		NO	85.0
+VT038	SD	Intermediate	12.8	1:DECEASED	7.5	M1c	IV	Vemurafenib	-0.25	NO	No	NO	0		NO	16.0
+VT049	PR	Intermediate	11.9	0:LIVING	5.8	M1c	IV	Vemurafenib	-0.59	NO	Ipilimumab	NO	1		NO	71.0
+VT056	PR	Intermediate	5.0	1:DECEASED	3.7	M1c	IV	Dabrafenib	-0.33	NO	No	NO	0		YES	94.0
+MT004	PR	Intermediate	14.3	1:DECEASED	11.4	M1c	IV	Vemurafenib	-0.38	NO	Ipilimumab	NO	0		YES	102.0
+VT061	PD	Poor	5.0	1:DECEASED	1.6	M1c	IV	Vemurafenib	-0.15	YES	No	NO	0		YES	84.0
+EC-0470	PD	Intermediate	5.6	1:DECEASED	4.9	M1c	IV	Vemurafenib	N.E.	YES	No	NO	1	clinical deterioration due to progression of disease	YES	162.0
+RB-0857	PR	Intermediate	7.6	1:DECEASED	4.6	M1c	IV	Vemurafenib	-0.31	YES	No	YES	0		NO	77.0
+VT012	PD	Poor	5.3	1:DECEASED	1.7	M1c	IV	Vemurafenib	1.16	NO	No	YES	1		NO	
+VT002p	PD	Poor	29.1	1:DECEASED	2.3	M1c	IV	Vemurafenib	0.56	NO	Ipilimumab	NO	0		YES	88.0
+VT003p	PR	Poor	2.0	1:DECEASED	2.0	M1c	IV	Vemurafenib	-0.57	NO	Ipilimumab	NO	4	clinically progressed and eventually died before 4 months	NO	
+VT016m1	PD	Poor	2.5	1:DECEASED	1.9	M1c	IV	Vemurafenib	-0.36	NO	Ipilimumab	NO	3		NO	62.0
+VT023	PD	Poor	1.8	1:DECEASED	1.7	M1c	IV	Vemurafenib	-0.22	NO	No	NO	3		NO	252.0
+VT035	SD	Poor	5.5	1:DECEASED	3.0	M1c	IV	Vemurafenib	-0.22	NO	No	NO	1		YES	92.0
+VT036	PR	Poor	4.4	1:DECEASED	2.6	M1c	IV	Vemurafenib	-0.32	NO	No	NO	1		YES	184.0
+VT053	PR	Poor	3.3	1:DECEASED	3.3	M1c	IV	Vemurafenib	-0.49	NO	No	NO	1		YES	119.6
+VT054	PR	Poor	5.6	1:DECEASED	3.0	M1a	IV	Vemurafenib	-0.62	NO	No	NO	1	developed new brain metastasis	YES	
+VT057	PR	Poor	6.6	1:DECEASED	3.5	M1c	IV	Vemurafenib	-0.46	NO	Ipilimumab	NO	0		NO	55.0
+VT037	PR	Poor	8.4	1:DECEASED	2.6	M1c	IV	Vemurafenib	-0.33	NO	Interferon (Adjuvant Setting)	NO	0		NO	160.0
+JJ-1446	PD	Poor	4.4	1:DECEASED	2.2	M1c	IV	Vemurafenib	0.37	YES	No	NO	1		NO	60.0
+TW0880	SD	Poor	13.3	1:DECEASED	4.2	M1c	IV	Vemurafenib	-0.28	NO	No	NO	1		NO	202.0
+JM-1218	SD	Poor	44.0	0:LIVING	3.7	M1c	IV	Dabrafenib	-0.12	NO	No	NO	1		NO	158.0
+SB-0663	SD	Poor	8.7	1:DECEASED	3.6	M1c	IV	Vemurafenib	0.08	NO	No	YES	1		YES	94.0
+DB-1159	PD	Poor	2.6	1:DECEASED	2.4	M1c	IV	Vemurafenib	-0.16	YES	No	NO	2		YES	150.0
+SH-0183	PD	Poor	3.0	1:DECEASED	2.4	M1c	IV	Vemurafenib	0.47	NO	High-Dose Il-2	YES	1		YES	186.0
+GS-1127	PD	Poor	13.6	1:DECEASED	1.9	M1a	IV	Dabrafenib	0.22	NO	No	NO	0	Developed New lesions	NO	67.0
+VT026	NE	NE	23.8	0:LIVING	16.8	M1c	IV	Vemurafenib	N.E	NO	Mk-3475 + Nivolumab	NO	0		NO	22.0
+VT024	NE	NE	13.3	1:DECEASED	3.0	M1c	IV	Vemurafenib	N.E.	NO	Ipilimumab	NO	0		NO	
+VT040	NE	NE	17.0	1:DECEASED	5.4	M1c	IV	Vemurafenib	N.E	NO	Ipilimumab	YES	1		YES	90.0
+VT058	NE	NE	12.2	1:DECEASED	5.9	M1a	IV	Vemurafenib	N.E.	NO	No	YES	0		NO	32.0
+VT022	SD	Intermediate	41.5	1:DECEASED	3.7	M1c	IV	Dabrafenib + Trametinib	-0.18	NO	Ipilimumab	NO	0		NO	17.0
+VT045	PR	Intermediate	26.6	0:LIVING	4.7	M1a	IV	Dabrafenib + Trametinib	-0.49	NO	Ipilimumab	NO	1		NO	53.0
+MF-1517	PR	Excellent	38.7	0:LIVING	14.9	M1c	IV	Dabrafenib + Trametinib	-0.79	NO	No	NO	1		NO	84.0
+NF-1117	PR	Excellent	13.5	1:DECEASED	12.0	M1c	IV	Dabrafenib + Trametinib	-0.78	NO	No	NO	1		YES	106.0
+DT-1153	CR	Excellent	35.7	1:DECEASED	22.7	M1c	IV	Dabrafenib + Trametinib	-1	NO	No	NO	1		NO	131.0
+DO-1227	CR	Excellent	27.8	0:LIVING	27.8	M1a	IV	Vemurafenib + cobimetinib	-1	NO	No	NO	1		NO	106.0
+CT-0923	PR	Excellent	45.6	0:LIVING	13.3	M1c	IV	Dabrafenib + Trametinib	-0.7	NO	No	NO	1		YES	62.0
+JL-1415	CR	Excellent	31.7	0:LIVING	31.7	M1c	IV	Vemurafenib + cobimetinib	-1	NO	Ipilimumab (Adjuvant Trial)	NO	1		NO	11.0
+VT051	PR	Poor	8.3	1:DECEASED	3.0	M1c	IV	Dabrafenib + Trametinib	-0.46	YES	Ipilimumab	NO	1		YES	88.0
+SF-1262	PR	Poor	7.5	1:DECEASED	3.3		IIIc	Vemurafenib + cobimetinib	-0.38	NO	Ipilimumab(Adjuvant Trial)	NO	0		NO	43.0
+JP-1351	SD	Poor	15.0	0:LIVING	1.9	M1c	IV	Dabrafenib + Trametinib	0.25	NO	No	YES	1		YES	185.0
