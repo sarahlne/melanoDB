@@ -5,7 +5,6 @@ import pathlib
 import pandas as pd
 import numpy as np
 import json
-
 from math import floor
 
 
@@ -77,9 +76,8 @@ class Rambow():
 
         # change value of some table columns
         table_sex = table['sex'].replace(['M','F'],['male', 'female'])
-        #table_age = table['Age at stating trial'],
         table_age = [round(x,0) for x in table['Age at stating trial']]
-        table_LDH = table['LDH @ drug start (0=normal, 1=elevated)'].replace([0,1],['normal', 'elevated'])
+        table_LDH = table['LDH @ drug start (0=normal, 1=elevated)'].replace([0,1,'x'],['normal', 'elevated',np.NaN])
         table_drug = table['drug type'].replace(['dab','vem','dab/tram'],['dabrafenib','vemurafenib','dabrafenib + trametinib'])
 
         table_PFS_month = [round(x/30,5) for x in table['PFS (days)']]
@@ -89,7 +87,7 @@ class Rambow():
         table_OS_month = [re.sub('>', '', x) for x in table['OS (days, > indicates still alive)'].astype('str')]
         table_OS_month = [round(int(x)/30,2) for x in table_OS_month]
 
-        table_DCR = table['RECIST category (CR/RES/No RES if no RECIST) '].replace(['No RES'], ['PD']) ### a modifié
+        table_DCR = table['RECIST category (CR/RES/No RES if no RECIST) '].replace(['No RES', 'RES'], ['CR', 'PD'])
 
         table_BRAF_mut = table['BRAF genotype']
         table_brain_met = table['Active brain mets @ drug start (0=no, 1=yes)'].replace([0,1], ['no','yes'])
@@ -106,6 +104,7 @@ class Rambow():
                 else:
                     samples=np.NAN
                     temp=np.NAN
+                pat_prefix = "RL"
                 article = dict(
                     title = 'BRAF Inhibitor Resistance Mechanisms in Metastatic Melanoma: Spectrum and Clinical Impact',
                     author =  'Helen Rizos, Georgina V.Long',
@@ -120,6 +119,7 @@ class Rambow():
                 else:
                     samples=np.NAN
                     temp=np.NAN
+                pat_prefix = "LR"
                 article=dict(
                     title = 'Increased MAPK reactivation in early resistance to dabrafenib/trametinib combination therapy of BRAF-mutant metastatic melanoma',
                     author =  'Georgina V.Long, Helen Rizos',
@@ -129,6 +129,8 @@ class Rambow():
                 
             patient_dict=dict(
                 patient_ID = patient_id,
+                original_patientID = patient_id,
+                internal_patientID=pat_prefix+"_"+patient_id,
                 samples=samples,
                 sex = table_sex[ind],
                 age = table_age[ind],
@@ -145,8 +147,9 @@ class Rambow():
                 drug = table_drug[ind],
                 brain_metastasis = table_brain_met[ind],
                 immunotherapy_treatment = np.NaN,
-                seq_data = 'no',
-                seq_type = np.NaN,
+                CNA='no',
+                SNV='no',
+                GEX='yes',
                 source = article
             )
             for (key, value) in patient_dict.items():
@@ -163,6 +166,7 @@ class Rambow():
     
     def parse_kwong_xlsx_from_file(self, file_path, file_supp_path):
         list_patients= []
+
         # Get supplement data information
         table_supp=pd.read_excel(file_supp_path, header=3)
         table_supp= table_supp.iloc[:26,:]
@@ -184,9 +188,14 @@ class Rambow():
         list_brain_met = ['yes' if 'br' in  table_clin_extended['Site of disease'][ind] else 'no' for ind in table_clin_extended.index]
         list_pfs = [np.round(table_clin_extended['Time To Progression (mos)'][ind],1) if type(table_clin_extended['Time To Progression (mos)'][ind])!=str else np.round(float(table_clin_extended['Time To Progression (mos)'][ind][0:2]),1) for ind in table_clin_extended.index]
 
+        table_clin_extended['Response'] = table_clin_extended['Response'].replace({'No data': np.NaN})
+        table_dcr = [x[0:2]  if isinstance(x, str) else x for x in table_clin_extended['Response']]
+
         for ind in range(0,len(table_clin_extended.index)):
             patient_dict=dict(
                 patient_ID = table_clin_extended['Patient'][ind],
+                original_patientID = table_clin_extended['Patient'][ind],
+                internal_patientID="KC_"+str(table_clin_extended['Patient'][ind]),
                 samples=np.NaN,
                 sex = table_clin_extended['sex'].replace({'M': 'male', 'F': 'female'})[ind],
                 age = np.round(table_clin_extended['age'][ind]),
@@ -197,14 +206,15 @@ class Rambow():
                 os_months = np.round(table_clin_extended['OS_days_1jan2018'][ind]/30.5,1),
                 pfs_statut = '1',
                 pfs = list_pfs[ind],
-                braf_mut = np.NaN,
-                disease_control_rate = table_clin_extended['Response'][ind][0:2],
+                braf_mut = "V600",
+                disease_control_rate = table_dcr[ind],
                 prelevement_temporality = np.NaN,
                 drug = table_clin_extended['RX_short'].replace({'vem':'vemurafenib', 'dab+tra': 'dabrafenib + trametinib'})[ind],
                 brain_metastasis = list_brain_met[ind],
                 immunotherapy_treatment = 'no',
-                seq_data = 'no',
-                seq_type = np.NAN,
+                CNA='no',
+                SNV='no',
+                GEX='yes',
                 source = dict(
                     title = 'Co-clinical assessment identifies patterns of BRAF inhibitor resistance in melanoma',
                     author =  'Lawrence N. Kwong, Lynda Chin',
@@ -224,7 +234,7 @@ class Rambow():
         print('the list of "Rambow (Boston, Kwong)" patients has been created')
         return(list_patients)
 
-    def parse_shi_xlsx_from_file(self, file_path, file_extend_path):
+    def parse_hugo_xlsx_from_file(self, file_path, file_extend_path):
         list_patients = []
         # Get main clinical data
         table = pd.read_excel(file_path)
@@ -254,8 +264,6 @@ class Rambow():
                 list_DCR.append('PD')
             else:
                 list_DCR.append('SD')
-
-            
 
         # Get extended clinical data
         table_extend = pd.read_excel(file_extend_path, 'A-ClinicalTable', skiprows=3 ,skipfooter=13)
@@ -291,11 +299,14 @@ class Rambow():
         for i in list_all:
             dict_all.setdefault(i[0],[]).append(i[1])
 
-        pat_prefix = 'SHI_'
+        pat_prefix = 'HL_'
+
         #create dictionaries
         for ind in table.index:
             patient_dict=dict(
                 patient_ID = pat_prefix+str(table['Patient ID'][ind]),
+                original_patientID = 'Shi-'+str(table['Patient ID'][ind]),
+                internal_patientID=pat_prefix+str(table['Patient ID'][ind]),
                 sex = table_sex[ind],
                 age = table_age[ind],
                 stage = table_stage[ind],
@@ -305,17 +316,18 @@ class Rambow():
                 os_months = np.NaN,
                 pfs_statut = '1',
                 pfs = table_PFS_month[ind],
-                braf_mut = np.NAN,
+                braf_mut = "V600",
                 disease_control_rate = list_DCR[ind],
                 prelevement_temporality = np.NaN,
                 drug = table_drug[ind],
                 brain_metastasis = 'no',
                 immunotherapy_treatment = np.NaN,
-                seq_data = 'no',
-                seq_type = np.NAN,
+                CNA='no',
+                SNV='no',
+                GEX='yes',
                 source = dict(
                     title = 'Acquired resistance and clonal evolution in melanoma during BRAF inhibitor therapy',
-                    author =  'Hubing Shi, Roger S. Lo',
+                    author =  'Hugo W., Roger S. Lo',
                     journal =  'Cancers Discovery',
                     location = 'Los Angeles (United State)',
                     date = 2014) 
@@ -332,7 +344,7 @@ class Rambow():
 
             list_patients.append(json.loads(convert_dict))
 
-        print('the list of "Rambow (LA, Shi&Lo)" patients has been created')
+        print('the list of "Rambow (LA, Hugo(Shi)&Lo)" patients has been created')
         return(list_patients)
     
 
@@ -391,7 +403,7 @@ class Rambow():
                 src= None
                 for key, val in dict_match_ids_rizos.items():
                     if(samp_ID in val):
-                        pat_ID=key
+                        pat_ID="RL_"+key
                         src=dict(
                                 title = 'BRAF Inhibitor Resistance Mechanisms in Metastatic Melanoma: Spectrum and Clinical Impact',
                                 author =  'Helen Rizos, Georgina V.Long',
@@ -402,7 +414,7 @@ class Rambow():
                 if not (pat_ID):
                     for key, val in dict_match_ids_long.items():
                         if(samp_ID in val):
-                            pat_ID=key
+                            pat_ID="LR_"+key
                             src=dict(
                                     title = 'Increased MAPK reactivation in early resistance to dabrafenib/trametinib combination therapy of BRAF-mutant metastatic melanoma',
                                     author =  'Georgina V.Long, Helen Rizos',
@@ -417,18 +429,15 @@ class Rambow():
                     temp = 'post treatment'
                 else:
                     temp=np.NaN
-                print(samp_ID)
-                print(pat_ID)
-                print(temp)
                 for i in range(0, len(table_gene_expr)):
                     val = table_gene_expr.iloc[i,j]
                     hgnc = table_gene_expr.Name[i]
                     desc = table_gene_expr['Description-deidentified'][i]
                     gene_expr_dict= dict(
-                        patient_ID = pat_ID,
-                        sample_ID = samp_ID,
+                        patientID = pat_ID,
+                        sample_id = samp_ID,
                         HGNC = hgnc,
-                        gene_ID= np.NaN,
+                        GeneID= np.NaN,
                         description = desc,
                         value = val, 
                         temporality = temp,
@@ -442,11 +451,12 @@ class Rambow():
                                     gene_expr_dict[key]=None
                     convert_dict = json.dumps(gene_expr_dict, cls=NpEncoder)
                     list_ramb_gene_expr.append(json.loads(convert_dict))
-        print('the list of "Rambow" gene expressions has been created')
+        print('the list of "Rambow (Sydney, Rizos&Long)" gene expressions has been created')
         return(list_ramb_gene_expr)
     
     def parse_kwong_gene_expression_from_file(self, file_path, file_gene_expr):
         list_kwong_gene_expr = []
+
         # Get main clinical data informations
         table_pat=pd.read_excel(file_path, 'key')
         dict_samples = {}
@@ -489,10 +499,10 @@ class Rambow():
                 else:
                     pat_ID=np.NaN
                 gene_expr_dict= dict(
-                    patient_ID = pat_ID,
-                    sample_ID = samp_ID,
+                    patientID = "KC_"+str(pat_ID),
+                    sample_id = samp_ID,
                     HGNC = hgnc,
-                    gene_ID= np.NaN,
+                    GeneID= np.NaN,
                     description = np.NaN,
                     value = val, 
                     temporality = dict_temp_samples[samp_ID],
@@ -515,8 +525,9 @@ class Rambow():
         return(list_kwong_gene_expr)
     
 
-    def parse_shi_gene_expression_from_file(self, file_extend_path, file_gene_expr):
+    def parse_hugo_gene_expression_from_file(self, file_extend_path, file_gene_expr):
         list_shi_gene_expr = []
+        
         # Get extended clinical data
         table_extend = pd.read_excel(file_extend_path, 'A-ClinicalTable', skiprows=3 ,skipfooter=13)
         cols_to_remove = [p for p in list(table_extend.columns) if 'Unnamed' in p]
@@ -564,16 +575,16 @@ class Rambow():
                     else:
                         pat_ID=np.NaN
                     gene_expr_dict= dict(
-                        patient_ID = pat_ID,
-                        sample_ID = samp_ID,
+                        patientID = "HL_"+pat_ID,
+                        sample_id = samp_ID,
                         HGNC = hgnc,
-                        gene_ID= np.NaN,
+                        GeneID = np.NaN,
                         description = np.NaN,
                         value = val, 
                         temporality = temp,
                         source = dict(
                             title = 'Acquired resistance and clonal evolution in melanoma during BRAF inhibitor therapy',
-                            author =  'Hubing Shi, Roger S. Lo',
+                            author =  'Hugo W., Roger S. Lo',
                             journal =  'Cancers Discovery',
                             location = 'Los Angeles (United State)',
                             date = 2014)
@@ -586,5 +597,5 @@ class Rambow():
                                     gene_expr_dict[key]=None
                     convert_dict = json.dumps(gene_expr_dict, cls=NpEncoder)
                     list_shi_gene_expr.append(json.loads(convert_dict))
-        print('the list of "Rambow (LA, Shi&Lo)" gene expressions has been created')
+        print('the list of "Rambow (LA, Hugo(Shi)&Lo)" gene expressions has been created')
         return(list_shi_gene_expr)

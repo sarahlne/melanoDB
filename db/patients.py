@@ -1,5 +1,5 @@
 import json
-
+import os
 from datetime import datetime
 from peewee import CharField, FloatField, ForeignKeyField
 from peewee import Field, IntegerField, DateField, DateTimeField, CharField, ForeignKeyField, Model as PWModel
@@ -10,8 +10,8 @@ from playhouse.sqlite_ext import JSONField
 with open('settings.json') as setting_file:
     settings_data=json.load(setting_file)
 
+db = SqliteDatabase(settings_data['db_dir']+settings_data['db_name'])
 #db = SqliteDatabase(settings_data['db_dir']+settings_data['db_test_name'])
-db = SqliteDatabase(settings_data['db_dir']+settings_data['db_test_name'])
 
 class Patients(PWModel):
     """
@@ -26,12 +26,9 @@ class Patients(PWModel):
     """
 
     id = IntegerField(primary_key=True)
-    data = JSONField(null=True)
     creation_datetime = DateTimeField(default=datetime.now)
-    #save_datetime = DateTimeField()
-    type = CharField(null=True, index=True)
-
-    patient_ID = CharField(null=True, index=True)
+    patientID = CharField(null=True, index=True)
+    original_patientID = CharField(null=True, index=True)
     sex = CharField(null=True, index=True)
     age = IntegerField(null=True, index=True)
     AJCC_stage = IntegerField(null=True, index=True)
@@ -42,12 +39,14 @@ class Patients(PWModel):
     PFS_statut=CharField(null=True, index=True)
     PFS_month = FloatField(null=True, index=True)
     drug = CharField(null=True, index=True)
-    disease_control_rate = CharField(null=True, index=True)
+    BOR = CharField(null=True, index=True)
     BRAF_mut=CharField(null=True, index=True)
     brain_metastasis = CharField(null=True, index=True)
     immunotherapy_treatment = IntegerField(null=True, index=True)
-    sequencing_data = CharField(null=True, index=True)
-    sequencing_type = CharField(null=True, index=True)
+    prior_MAPK_treatment = IntegerField(null=True, index=True)
+    CNA_data=CharField(null=True, index=True)
+    SNV_data=CharField(null=True, index=True)
+    GEX_data=CharField(null=True, index=True)
     source = JSONField(null=True)
 
     #_table_name = 'Patients'
@@ -67,7 +66,7 @@ class Patients(PWModel):
         list_pat_blateau = b.parse_xlsx_from_file(settings_data['blateau_file'], 'patients')
 
         c = Catalanotti()
-        list_pat_catalanotti = c.parse_xlsx_from_file(settings_data['catalanotti_file'], settings_data['catalanotti_clinical_sample'])
+        list_pat_catalanotti = c.parse_xlsx_from_file(settings_data['catalanotti_file'], settings_data['catalanotti_clinical_sample'], settings_data['catalanotti_baits'])
 
         v = VanAllen()
         list_pat_vanallen = v.parse_xlsx_from_file(settings_data['van_allen_file'])
@@ -77,40 +76,32 @@ class Patients(PWModel):
 
         m = Louveau()
         list_pat_louveau = m.parse_xlsx_from_file(settings_data['louveau_file'])
-        #print(list_pat_louveau)
 
         r = Rambow()
-        list_pat_rambow = r.parse_xlsx_from_file(settings_data['rambow_clinical'])
-        #print(list_pat_rambow)
-
-        riz = Rizos()
-        #list_pat_rizos = riz.parse_xlsx_from_file(settings_data['rizos_clinical'])
-        #print(list_pat_rizos)
-        
-        shi = Shi()
-        list_pat_shi = shi.parse_xlsx_from_file(settings_data['shi_clinical'])
-        #print(list_pat_shi)
+        list_pat_rambow_rizos_long = r.parse_xlsx_from_file(settings_data['rambow_clinical_rizos&long'])
+        list_pat_rambow_kwong = r.parse_kwong_xlsx_from_file(settings_data['rambow_clinical_kwong'], settings_data['rambow_clinical_supp_kwong'])
+        list_pat_rambow_shi = r.parse_hugo_xlsx_from_file(settings_data['rambow_clinical_shi'], settings_data['rambow_clinical_extd_shi'])
 
         cls.create_patients_table_from_list(list_pat_blateau)
         cls.create_patients_table_from_list(list_pat_catalanotti)
         cls.create_patients_table_from_list(list_pat_vanallen)
         cls.create_patients_table_from_list(list_pat_yan)
         cls.create_patients_table_from_list(list_pat_louveau)
-        #cls.create_patients_table_from_list(list_pat_rambow)
-        #cls.create_patients_table_from_list(list_pat_rizos)
-        cls.create_patients_table_from_list(list_pat_shi)
+        cls.create_patients_table_from_list(list_pat_rambow_rizos_long)
+        cls.create_patients_table_from_list(list_pat_rambow_kwong)
+        cls.create_patients_table_from_list(list_pat_rambow_shi)
 
     @classmethod
     def create_patients_table_from_list(cls, list_pt):
         for dico in list_pt:
-            pat = cls(data=dico)
-            pat.type = type(pat)
-            pat.set_pat_id(dico["patient_ID"])
+            pat = cls()
+            pat.set_original_id(dico["original_patientID"])
+            pat.set_intern_id(dico["internal_patientID"])
             pat.set_sex(dico["sex"])
             pat.set_age(dico["age"])
             pat.set_AJCC_stage(dico["stage"])
-            if ('M_stage' in pat.data.keys()):
-                pat.set_M_stage(pat.data['M_stage'])
+            if ('M_stage' in dico.keys()):
+                pat.set_M_stage(dico['M_stage'])
             pat.set_LDH(dico['LDH'])
             pat.set_os_statut(dico['os_statut'])
             pat.set_os_month(dico['os_months'])
@@ -121,13 +112,14 @@ class Patients(PWModel):
             pat.set_BRAF_mut(dico['braf_mut'])
             pat.set_brain_met(dico['brain_metastasis'])
             pat.set_immuno_treatment(dico['immunotherapy_treatment'])
-            pat.set_sequencing_data(dico['seq_data'])
-            pat.set_sequencing_type(dico['seq_type'])
+            if ('prior_mapk_treatment' in dico.keys()):
+                pat.set_prior_treatment(dico['prior_mapk_treatment'])
+            pat.set_CNA(dico['CNA'])
+            pat.set_SNV(dico['SNV'])
+            pat.set_GEX(dico['GEX'])
             pat.set_source(dico['source'])
             pat.save()
-        #patients = [cls(data = dict_) for dict_ in list_pat]
-
-
+        #patients = [cls(data = dict_) for dict_ in list_pat  
         # for pat in patients:
         #     pat.set_sex(pat.data["sex"])
         #     pat.set_age(pat.data["age"])
@@ -145,6 +137,26 @@ class Patients(PWModel):
             :type name: str
             """
             self.patient_ID = pat_id
+
+    def set_original_id(self, origin_id):
+        if(origin_id):
+            """
+            Sets the name of the go term
+
+            :param name: The name
+            :type name: str
+            """
+            self.original_patientID = origin_id
+
+    def set_intern_id(self, intern_id):
+        if(intern_id):
+            """
+            Sets the name of the go term
+
+            :param name: The name
+            :type name: str
+            """
+            self.patientID = intern_id
 
     def set_sex(self, sex):
         if(sex):
@@ -254,7 +266,7 @@ class Patients(PWModel):
             if('/' in DCR):
                 DCR = DCR.split('/')[0]
 
-            self.disease_control_rate = DCR.replace(" ", "")
+            self.BOR = DCR.replace(" ", "")
 
     def set_BRAF_mut(self, BRAF_mut):
         if(BRAF_mut is not None):
@@ -286,25 +298,21 @@ class Patients(PWModel):
             """
             self.immunotherapy_treatment = immuno_treatment
     
-    def set_sequencing_data(self, seq_data):
-        if(seq_data):
-            """
-            Sets the name of the go term
-
-            :param name: The name
-            :type name: str
-            """
-            self.sequencing_data = seq_data
-
-    def set_sequencing_type(self, seq_type):
-        if(seq_type):
-            """
-            Sets the name of the go term
-
-            :param name: The name
-            :type name: str
-            """
-            self.sequencing_type = seq_type
+    def set_prior_treatment(self, prior_treatment):
+        if(prior_treatment is not None):
+            self.prior_MAPK_treatment = prior_treatment
+    
+    def set_CNA(self, CNA):
+        if(CNA is not None):
+            self.CNA_data=CNA
+    
+    def set_SNV(self, SNV):
+        if(SNV is not None):
+            self.SNV_data=SNV
+    
+    def set_GEX(self, GEX):
+        if(GEX is not None):
+            self.GEX_data=GEX
 
     def set_source(self, source):
         if(source):

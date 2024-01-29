@@ -48,9 +48,10 @@ class Yan():
         table_sex = table['Sex']
         table_sex = table_sex.replace(['Male','Female'],['male', 'female'])
 
-        table_OS = table['OS Censor']
+        table_OS = table['OS Censor'].replace([0,1],[1,0])
         table_OS = table_OS.replace([0,1], ['alive', 'dead'])
-        table_PFS = table['PFS (Months)'].replace([0,1],[1,0])
+        table_PFS = table['PFS (Months)']
+        table_PFS_Censor = table['PFS Censor'].replace([0,1],[1,0])
         table_LDH = table['LDH'].replace(['Normal','Elevated'], ['normal', 'elevated'])
 
         table_AJCC_Stage = table['Stage'].replace(['M1A','M1B', 'M1C', 'Unresectable', 'IIIC', 'Unresectable Stage IIIC'], ['IV', 'IV', 'IV', 'IV', 'III', 'III'])
@@ -59,6 +60,8 @@ class Yan():
         for ind in table.index:
             patient_dict=dict(
                 patient_ID = table['Patient ID'][ind],
+                original_patientID = table['Patient ID'][ind],
+                internal_patientID="YR_"+f"{table['Patient ID'][ind]}",
                 sex = table_sex[ind],
                 age = table['Age'][ind],
                 stage = table_AJCC_Stage[ind],
@@ -66,17 +69,16 @@ class Yan():
                 LDH = table_LDH[ind],
                 os_statut = table_OS[ind],
                 os_months = table['OS (Months)'][ind],
-                pfs_statut = str(int(table['PFS Censor'][ind])),
+                pfs_statut = str(int(table_PFS_Censor[ind])),
                 pfs = table_PFS[ind],
                 braf_mut = table['BRAF V600 Mut'][ind],
                 disease_control_rate = table['BORR'][ind],
-                #prelevement_temporality = table['timing'][ind],
                 drug = table['Rx'][ind],
                 brain_metastasis = np.NaN,
                 immunotherapy_treatment = np.NaN,
-                #immunotherapy_mol = table['Immunotherapy'][ind],
-                seq_data = 'no',
-                seq_type = np.NaN,
+                CNA='no',
+                SNV='no',
+                GEX='yes',
                 source = dict(
                     title = 'Genomic Features of Exceptional Response in Vemurafenib + Cobimetinib–treated Patients with BRAFV600-mutated Metastatic Melanoma',
                     author =  'Yibing Yan, Antoni Ribas',
@@ -111,7 +113,7 @@ class Yan():
 
         for j in range(0, len(table_gene_expr.columns)):
             if (table_gene_expr.columns[j] in dict_ids.keys()):
-                pat_ID = dict_ids[table_gene_expr.columns[j]]
+                pat_ID = "YR_"+dict_ids[table_gene_expr.columns[j]]
             else:
                 pat_ID=np.NAN
             samp_ID = table_gene_expr.columns[j]
@@ -124,10 +126,11 @@ class Yan():
                     hgnc=np.NAN
 
                 gene_expr_dict= dict(
-                    patient_ID = pat_ID,
-                    sample_ID = samp_ID,
+                    patientID = pat_ID,
+                    sample_id = samp_ID,
                     HGNC = hgnc,
-                    gene_ID= table_gene_expr.index[i],
+                    GeneID= table_gene_expr.index[i],
+                    description = np.NaN,
                     value = val, 
                     temporality = 'pre treatment',
                     source = dict(

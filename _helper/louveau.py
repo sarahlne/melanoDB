@@ -47,8 +47,8 @@ class Louveau():
 
         # import table
         table = pd.read_excel(file_path, header=0)
-        # exclude patients with no inhibitors as first line therapy ('ligne_bitherap1'!=1)
-        table = table[table['ligne_bitherap1']==1].reset_index(drop=True)
+        # exclude patients with no inhibitors as first or second line therapy ('ligne_bitherap1'!=1 | 'ligne_bitherap1'!=2)
+        table = table[(table['ligne_bitherap1']==1) | (table['ligne_bitherap1']==2)].reset_index(drop=True)
         # change values of some table columns 
         table_sex = table['Sexe']
         table_sex = table_sex.replace(['M','F'],['male', 'female'])
@@ -88,13 +88,17 @@ class Louveau():
         table_drug = table['nom_bitherap1'].replace(['vemu+cobi', 'dabra+trame'], ['vemurafenib + cobimetinib', 'dabrafenib + trametinib'])
         table_brain_met = table['Metastases_cerebrales'].replace([0,1],['no', 'yes'])
 
-        pat_prefix = 'LOU_'
-        sample_prefix= 'LOUSAM_'
+        list_prior_treatment = ['yes' if x==2 else 'no' for x in table['ligne_bitherap1']]
+
+        pat_prefix = 'LM_'
+        sample_prefix= 'LMSAM_'
 
         #create dictionaries
         for ind in table.index:
             patient_dict=dict(
                 patient_ID = pat_prefix+str(table['Numero'][ind]),
+                original_patientID = str(table['Numero'][ind]),
+                internal_patientID=pat_prefix+str(table['Numero'][ind]),
                 sex = table_sex[ind],
                 age = table_age[ind],
                 stage = table_stage[ind],
@@ -110,8 +114,10 @@ class Louveau():
                 drug = table_drug[ind],
                 brain_metastasis = table_brain_met[ind],
                 immunotherapy_treatment = 'no',
-                seq_data = 'yes',
-                seq_type = 'partial',
+                prior_mapk_treatment = list_prior_treatment[ind],
+                CNA='no',
+                SNV='yes',
+                GEX='yes',
                 source = dict(
                     title = 'Baseline Genomic Features in BRAFV600-Mutated Metastatic Melanoma Patients Treated with BRAF Inhibitor + MEK Inhibitor in Routine Care',
                     author =  'Baptiste Louveau, Samia Mourah',
@@ -136,10 +142,10 @@ class Louveau():
     def parse_mutations_from_file(self, file_mutation_path):
         list_louveau_mutations = []
         table_mutations = pd.read_excel(file_mutation_path)
-        table_mutations = table_mutations[table_mutations['ligne_bitherap1']==1].reset_index(drop=True)
+        table_mutations = table_mutations[(table_mutations['ligne_bitherap1']==1) | (table_mutations['ligne_bitherap1']==2)].reset_index(drop=True)
 
-        pat_prefix = 'LOU_'
-        sample_prefix= 'LOUSAM_'
+        pat_prefix = 'LM_'
+        sample_prefix= 'LMSAM_'
 
         for ind in table_mutations.index:
             list_mutations_pat = table_mutations['Analyse NGS_cur'][ind]
@@ -152,8 +158,8 @@ class Louveau():
                     else:
                         hgvsp_short = np.NaN
                     snp_dict = dict(
-                        patient_ID = pat_prefix+str(table_mutations['Numero'][ind]),
-                        sample_ID = sample_prefix+str(table_mutations['Numero'][ind]),
+                        patientID = pat_prefix+str(table_mutations['Numero'][ind]),
+                        sample_id = sample_prefix+str(table_mutations['Numero'][ind]),
                         HGNC = elem.split(':')[0].replace(' ', ''),
                         HGVSp_short = hgvsp_short,
                         mutated = 'yes',
@@ -182,8 +188,8 @@ class Louveau():
         table_gene_expr = pd.read_csv(file_gene_expr, sep=';', encoding='latin1')
         table_gene_expr = table_gene_expr[table_gene_expr['ligne_bitherap1']==1].reset_index(drop=True)
 
-        pat_prefix = 'LOU_'
-        sample_prefix= 'LOUSAM_'
+        pat_prefix = 'LM_'
+        sample_prefix= 'LMSAM_'
 
         for i in range(0,len(table_gene_expr)):
             pat_ID = pat_prefix+str(table_gene_expr['Numero'][i])
@@ -195,10 +201,11 @@ class Louveau():
                 else:
                     val=np.NAN
                 gene_expr_dict= dict(
-                    patient_ID = pat_ID,
-                    sample_ID = samp_ID,
+                    patientID = pat_ID,
+                    sample_id = samp_ID,
                     HGNC = table_gene_expr.columns[j],
-                    gene_ID=np.NaN,
+                    GeneID=np.NaN,
+                    description = np.NaN,
                     value = val, 
                     temporality = 'pre treatment',
                     source = dict(

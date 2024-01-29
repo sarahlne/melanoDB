@@ -33,7 +33,7 @@ class VanAllen():
 
     def parse_xlsx_from_file(self, file_path):
         """
-        Read the csv file extract from the clinical study (Fichier_melanome_RL.xlsx) and returns a list of dictionnaries
+        Read the csv file extract from the clinical study and returns a list of dictionnaries
         where terms represent proteins filled with their informations (age, sex, stage, etc...). 
 
         :returns: list of all patients in the study
@@ -47,7 +47,6 @@ class VanAllen():
         table=table.reset_index(drop=True)
 
         table['MEDICATION']=table['MEDICATION'].replace(np.nan, 'unknow')
-        #sup_table = pd.read_excel(file_path2, header=1)
         #table = table.drop(table.index[53:89],0, inplace=False)
         
         # change values of some table columns 
@@ -60,6 +59,8 @@ class VanAllen():
         for ind in table.index:
             patient_dict=dict(
                 patient_ID = table['PATIENT_ID'][ind],
+                original_patientID = table['PATIENT_ID'][ind],
+                internal_patientID="VS_"+table['PATIENT_ID'][ind],
                 sex = table_sex[ind],
                 age = table['AGE'][ind],
                 stage = np.NaN,
@@ -68,15 +69,16 @@ class VanAllen():
                 os_months = np.NaN,
                 pfs_statut = str(table_pfs_statut[ind]),
                 pfs = (table['DURATION_OF_THERAPY_WEEKS'][ind])/4,
-                braf_mut = np.NaN,
+                braf_mut = "V600",
                 disease_control_rate = table['TREATMENT_BEST_RESPONSE'][ind],
                 prelevement_temporality = np.NaN,
                 drug = table['MEDICATION'][ind],
                 brain_metastasis = np.NaN,
                 immunotherapy_treatment = np.NaN,
                 immunotherapy_mol = np.NaN,
-                seq_data = 'yes',
-                seq_type = 'complete',
+                CNA='no',
+                SNV='yes',
+                GEX='no',
                 source = dict(
                     title = 'The Genetic Landscape of Clinical Resistance to RAF Inhibition in Metastatic Melanoma',
                     author =  'Eliezer M. Van Allen, Dirk Schadendorf',
@@ -115,17 +117,17 @@ class VanAllen():
         #create mutations dictionaries
         for ind in table_mutations_extended.index:
             snp_dict = dict(
-                sample_ID = table_mutations_extended['Tumor_Sample_Barcode'][ind],
-                patient_ID = table_IDs['Patient_ID'][ind],
+                sample_id = table_mutations_extended['Tumor_Sample_Barcode'][ind],
+                patientID = "VS_"+table_IDs['Patient_ID'][ind],
                 HGNC = table_mutations_extended['Hugo_Symbol'][ind],
-                Consequence = table_mutations_extended['Consequence'][ind],
+                consequence = table_mutations_extended['Consequence'][ind],
                 HGVSp = table_mutations_extended['HGVSp'][ind],
                 HGVSp_short = table_mutations_extended['HGVSp_Short'][ind],
-                Variant_Classification = table_mutations_extended['Variant_Classification'][ind],
-                Variant_Type = table_mutations_extended['Variant_Type'][ind],
-                Chromosome = table_mutations_extended['Chromosome'][ind],
-                start_pos = table_mutations_extended['Start_Position'][ind],
-                end_pos = table_mutations_extended['End_Position'][ind],
+                variant_classification = table_mutations_extended['Variant_Classification'][ind],
+                variant_type = table_mutations_extended['Variant_Type'][ind],
+                chromosome = table_mutations_extended['Chromosome'][ind],
+                start_position = table_mutations_extended['Start_Position'][ind],
+                end_position = table_mutations_extended['End_Position'][ind],
                 strand = table_mutations_extended['Strand'][ind],
                 ref_allele = table_mutations_extended['Reference_Allele'][ind],
                 tumor_allele_1 = table_mutations_extended['Tumor_Seq_Allele1'][ind],

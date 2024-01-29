@@ -28,7 +28,7 @@ class NpEncoder(json.JSONEncoder):
 
 
 class Blateau():
-    from _helper.converter import NpEncoder
+    
     """
     This module allows to get list of dictionnaries where terms represents patients
     """
@@ -77,6 +77,8 @@ class Blateau():
         table_immuno_T = table['Immunothérapie (0=neg, 1=event)']
         table_immuno_T = table_immuno_T.replace([0,1],['no', 'yes'])
 
+        table_prior = table['Anti BRAF 1ère ligne (0=oui; 1=non)'].replace({0.0: 'no', 1.0:'yes'})
+
         list_dabrafenib = table.index[table['DABRAFENIB']==True].to_list()
         list_vemurafenib = table.index[table['VEMURAFENIB']==True].to_list()
         list_dabrafenib_trametinib = table.index[table['DABRAFENIB + TRAMETINIB']==True].to_list()
@@ -97,7 +99,9 @@ class Blateau():
         # PATIENTS
         for ind in table.index:
             patient_dict=dict(
-                patient_ID=pat_prefix+f"{ind:03}",
+                patient_ID=pat_prefix+"_"+f"{ind:03}",
+                original_patientID = f"{ind:01}",
+                internal_patientID=pat_prefix+"_"+f"{ind:03}",
                 sex = table_sexe[ind],
                 age = table['age'][ind],
                 stage = table_AJCC[ind],
@@ -108,12 +112,13 @@ class Blateau():
                 pfs = table['PFS en mois'][ind],
                 braf_mut = table_braf_mut[ind],
                 disease_control_rate = table_disease_control_rate[ind],
-                #prelevement_temporality = 'only before treatment',
                 drug = table_agent[ind],
                 brain_metastasis = table_brain_met[ind],
                 immunotherapy_treatment = table_immuno_T[ind],
-                seq_data = 'yes',
-                seq_type = 'partial',
+                prior_mapk_treatment = table_prior[ind],
+                CNA='no',
+                SNV='yes',
+                GEX='no',
                 source = dict(
                     title = 'TERT Promoter Mutation as an Independent Prognostic Marker for Poor Prognosis MAPK Inhibitors-Treated Melanoma',
                     author =  'Pauline Blateau, Jerome Solassol',
@@ -128,7 +133,7 @@ class Blateau():
             convert_dict = json.dumps(patient_dict, cls=NpEncoder)
             list_patients.append(json.loads(convert_dict))
 
-        # SNPS
+        # SNVS
             braf_stat=table.iloc[ind,39]
             if braf_stat==0:
                 braf_stat='V600E'
@@ -143,8 +148,8 @@ class Blateau():
                 else:
                     HGVSp = None
                 snp_dict=dict(
-                    sample_ID=sample_prefix+f"{ind:03}",
-                    patient_ID=pat_prefix+f"{ind:03}",
+                    sample_id=sample_prefix+f"{ind:03}",
+                    patientID=pat_prefix+"_"+f"{ind:03}",
                     HGNC = mutations.index[i],
                     HGVSp_short = HGVSp,
                     mutated = mutations[i],
