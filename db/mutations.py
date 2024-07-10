@@ -10,7 +10,8 @@ from playhouse.sqlite_ext import JSONField
 with open('settings.json') as setting_file:
     settings_data=json.load(setting_file)
 
-db = SqliteDatabase(settings_data['db_dir']+settings_data['db_test_name'])
+db = SqliteDatabase(settings_data['db_dir']+settings_data['db_name'])
+#db = SqliteDatabase(settings_data['db_dir']+settings_data['db_test_name'])
 
 class Mutations(PWModel):
 

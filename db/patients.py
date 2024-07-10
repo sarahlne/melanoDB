@@ -56,10 +56,10 @@ class Patients(PWModel):
         from _helper.catalanotti import Catalanotti
         from _helper.vanallen import VanAllen
         from _helper.yan import Yan
-        from _helper.rizos import Rizos
+        #from _helper.rizos import Rizos
         from _helper.louveau import Louveau
         from _helper.rambow import Rambow
-        from _helper.shi import Shi
+        #from _helper.shi import Shi
     
 
         b = Blateau()
@@ -327,4 +327,4 @@ class Patients(PWModel):
 
     class Meta():
         database = db
-        table_name = 'patients'
+        table_name = 'clinical'

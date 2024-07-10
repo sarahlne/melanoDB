@@ -1,0 +1,99 @@
+Arrayname,samplename,Batch,category
+melanoDB,03660196C,1,pre treatment
+melanoDB,03660356C,1,pre treatment
+melanoDB,03660445B,1,pre treatment
+melanoDB,03660447B,1,pre treatment
+melanoDB,03660501B,1,pre treatment
+melanoDB,03660502B,1,pre treatment
+melanoDB,03660555B,1,pre treatment
+melanoDB,03660598B,1,pre treatment
+melanoDB,03660602B,1,pre treatment
+melanoDB,04240076F,1,pre treatment
+melanoDB,04240106F,1,pre treatment
+melanoDB,04240120C,1,pre treatment
+melanoDB,04240151B,1,pre treatment
+melanoDB,05320003B,1,pre treatment
+melanoDB,05320011B,1,pre treatment
+melanoDB,05320012B,1,pre treatment
+melanoDB,05320093C,1,pre treatment
+melanoDB,05320100B,1,pre treatment
+melanoDB,05320102B,1,pre treatment
+melanoDB,05320108C,1,pre treatment
+melanoDB,05320114C,1,pre treatment
+melanoDB,05320119C,1,pre treatment
+melanoDB,05320132B,1,pre treatment
+melanoDB,05320141B,1,pre treatment
+melanoDB,05320143B,1,pre treatment
+melanoDB,05320146B,1,pre treatment
+melanoDB,05320179B,1,pre treatment
+melanoDB,05320184B,1,pre treatment
+melanoDB,05320188B,1,pre treatment
+melanoDB,05320191B,1,pre treatment
+melanoDB,05320196B,1,pre treatment
+melanoDB,05320205B,1,pre treatment
+melanoDB,05320216B,1,pre treatment
+melanoDB,05320217B,1,pre treatment
+melanoDB,05320220B,1,pre treatment
+melanoDB,05320229B,1,pre treatment
+melanoDB,05320232B,1,pre treatment
+melanoDB,05320234B,1,pre treatment
+melanoDB,05320239B,1,pre treatment
+melanoDB,05320243B,1,pre treatment
+melanoDB,05320286B,1,pre treatment
+melanoDB,05320302B,1,pre treatment
+melanoDB,05320328B,1,pre treatment
+melanoDB,05320353C,1,pre treatment
+melanoDB,05320372C,1,pre treatment
+melanoDB,05320381B,1,pre treatment
+melanoDB,05320384B,1,pre treatment
+melanoDB,05320385B,1,pre treatment
+melanoDB,05320388B,1,pre treatment
+melanoDB,05320393B,1,pre treatment
+melanoDB,05320399C,1,pre treatment
+melanoDB,05320410C,1,pre treatment
+melanoDB,05320420B,1,pre treatment
+melanoDB,05320424B,1,pre treatment
+melanoDB,05320425B,1,pre treatment
+melanoDB,05320435B,1,pre treatment
+melanoDB,05320436B,1,pre treatment
+melanoDB,05320444B,1,pre treatment
+melanoDB,05320446B,1,pre treatment
+melanoDB,05320449B,1,pre treatment
+melanoDB,05320452B,1,pre treatment
+melanoDB,05320459B,1,pre treatment
+melanoDB,05420099C,1,pre treatment
+melanoDB,05420129C,1,pre treatment
+melanoDB,05420135C,1,pre treatment
+melanoDB,05420138C,1,pre treatment
+melanoDB,05420145C,1,pre treatment
+melanoDB,05420159C,1,pre treatment
+melanoDB,05420169C,1,pre treatment
+melanoDB,05420180C,1,pre treatment
+melanoDB,05420199C,1,pre treatment
+melanoDB,05420211C,1,pre treatment
+melanoDB,10A,2,pre treatment
+melanoDB,12A,2,pre treatment
+melanoDB,13A,2,pre treatment
+melanoDB,15A,2,pre treatment
+melanoDB,16A,2,pre treatment
+melanoDB,19A,2,pre treatment
+melanoDB,22A,2,pre treatment
+melanoDB,24A,2,pre treatment
+melanoDB,25A,2,pre treatment
+melanoDB,2A,2,pre treatment
+melanoDB,34A,2,pre treatment
+melanoDB,6A,2,pre treatment
+melanoDB,7A,2,pre treatment
+melanoDB,9A,2,pre treatment
+melanoDB,Pt1-baseline,"{'title': 'Acquired resistance and clonal evolution in melanoma during BRAF inhibitor therapy', 'author': 'Hugo W., Roger S. Lo', 'journal': 'Cancers Discovery', 'location': 'Los Angeles (United State)', 'date': 2014}",pre treatment
+melanoDB,Pt2-baseline,"{'title': 'Acquired resistance and clonal evolution in melanoma during BRAF inhibitor therapy', 'author': 'Hugo W., Roger S. Lo', 'journal': 'Cancers Discovery', 'location': 'Los Angeles (United State)', 'date': 2014}",pre treatment
+melanoDB,Pt3-baseline,"{'title': 'Acquired resistance and clonal evolution in melanoma during BRAF inhibitor therapy', 'author': 'Hugo W., Roger S. Lo', 'journal': 'Cancers Discovery', 'location': 'Los Angeles (United State)', 'date': 2014}",pre treatment
+melanoDB,Pt4-baseline,"{'title': 'Acquired resistance and clonal evolution in melanoma during BRAF inhibitor therapy', 'author': 'Hugo W., Roger S. Lo', 'journal': 'Cancers Discovery', 'location': 'Los Angeles (United State)', 'date': 2014}",pre treatment
+melanoDB,Pt5-baseline,"{'title': 'Acquired resistance and clonal evolution in melanoma during BRAF inhibitor therapy', 'author': 'Hugo W., Roger S. Lo', 'journal': 'Cancers Discovery', 'location': 'Los Angeles (United State)', 'date': 2014}",pre treatment
+melanoDB,Pt6-baseline,"{'title': 'Acquired resistance and clonal evolution in melanoma during BRAF inhibitor therapy', 'author': 'Hugo W., Roger S. Lo', 'journal': 'Cancers Discovery', 'location': 'Los Angeles (United State)', 'date': 2014}",pre treatment
+melanoDB,Pt8-baseline,"{'title': 'Acquired resistance and clonal evolution in melanoma during BRAF inhibitor therapy', 'author': 'Hugo W., Roger S. Lo', 'journal': 'Cancers Discovery', 'location': 'Los Angeles (United State)', 'date': 2014}",pre treatment
+melanoDB,Pt9-baseline,"{'title': 'Acquired resistance and clonal evolution in melanoma during BRAF inhibitor therapy', 'author': 'Hugo W., Roger S. Lo', 'journal': 'Cancers Discovery', 'location': 'Los Angeles (United State)', 'date': 2014}",pre treatment
+melanoDB,Pt10-baseline,"{'title': 'Acquired resistance and clonal evolution in melanoma during BRAF inhibitor therapy', 'author': 'Hugo W., Roger S. Lo', 'journal': 'Cancers Discovery', 'location': 'Los Angeles (United State)', 'date': 2014}",pre treatment
+melanoDB,Pt15-baseline,"{'title': 'Acquired resistance and clonal evolution in melanoma during BRAF inhibitor therapy', 'author': 'Hugo W., Roger S. Lo', 'journal': 'Cancers Discovery', 'location': 'Los Angeles (United State)', 'date': 2014}",pre treatment
+melanoDB,Pt16-baseline,"{'title': 'Acquired resistance and clonal evolution in melanoma during BRAF inhibitor therapy', 'author': 'Hugo W., Roger S. Lo', 'journal': 'Cancers Discovery', 'location': 'Los Angeles (United State)', 'date': 2014}",pre treatment
+melanoDB,Pt17-baseline,"{'title': 'Acquired resistance and clonal evolution in melanoma during BRAF inhibitor therapy', 'author': 'Hugo W., Roger S. Lo', 'journal': 'Cancers Discovery', 'location': 'Los Angeles (United State)', 'date': 2014}",pre treatment

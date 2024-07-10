@@ -6,7 +6,7 @@
 
     "db_dir"                        : "./database/",
     "db_name"                       : "MelanoDB.db",
-    "db_test_name"                  : "TEST_MelanoDB.db",
+    "db_test_name"                  : "TEST4_MelanoDB.db",
 
     "clinical_studies" : {
         "blateau_file"                              : "./clinical-studies/blateau&solassol_Cancers-2020/Fichier_melanome_RL.xlsx",
